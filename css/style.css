@@ -1,13 +1,9 @@
-/* style.css */
-
-/* Base Styles */
 body {
     font-family: 'Roboto', sans-serif;
     background: linear-gradient(135deg, #1a1f29 0%, #2c1f3a 100%);
     color: #e2e8f0;
 }
 
-/* Sidebar Styles */
 .sidebar {
     width: 250px;
     min-height: 100vh;
@@ -20,7 +16,6 @@ body {
     background: linear-gradient(180deg, #2c1f3a 0%, #1a1f29 100%) !important;
 }
 
-/* Navigation Links */
 .nav-link {
     font-weight: bold;
     padding: 10px 15px;
@@ -84,7 +79,6 @@ body {
     animation: glowing 2s infinite;
 }
 
-/* Tambahan animasi untuk SVG */
 @keyframes rotate {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
@@ -95,8 +89,8 @@ body {
 }
 
 .table {
-    color: #fff !important; /* Warna teks tabel */
-    background-color: rgba(255, 255, 255, 0.1); /* Background semi-transparan */
+    color: #fff !important; 
+    background-color: rgba(255, 255, 255, 0.1); 
 }
 
 .table thead th {
@@ -109,28 +103,23 @@ body {
     border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Untuk memberikan efek hover pada baris tabel */
 .table tbody tr:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Mengubah warna background body jika diperlukan */
 body {
-    background-color: #2c1f3a; /* atau warna gelap lainnya */
+    background-color: #2c1f3a; 
     color: #fff;
 }
 
-/* Mengubah warna teks untuk form labels */
 .form-label {
     color: #fff;
 }
 
-/* Mengubah warna teks untuk header */
 .header-title {
     color: #fff;
 }
 
-/* User Welcome Section in Sidebar */
 .sidebar p {
     color: #00fa9a;
 }
@@ -139,7 +128,6 @@ body {
     color: #b8a2d4;
 }
 
-/* Container and Layout */
 .container {
     padding: 2rem;
 }
@@ -148,7 +136,6 @@ body {
     background: linear-gradient(135deg, #1a1f29 0%, #2c1f3a 100%);
 }
 
-/* Header Title */
 .header-title {
     position: relative;
     padding: 20px;
@@ -175,7 +162,6 @@ body {
     z-index: -1;
 }
 
-/* Card Styles */
 .card {
     background: rgba(44, 31, 58, 0.7);
     border: none;
@@ -207,7 +193,6 @@ body {
     margin: 0;
 }
 
-/* Icon Colors with Glow Effect */
 .fa-users { 
     color: #00fa9a; 
     text-shadow: 0 0 10px rgba(0, 250, 154, 0.5); 
@@ -228,7 +213,6 @@ body {
     text-shadow: 0 0 10px rgba(138, 43, 226, 0.5); 
 }
 
-/* Chart Styles */
 #myChart {
     background: rgba(44, 31, 58, 0.7);
     border-radius: 15px;
@@ -236,7 +220,6 @@ body {
     margin-top: 2rem;
 }
 
-/* Button Styles */
 .btn-outline-danger {
     color: #ff6b6b;
     border-color: #ff6b6b;
@@ -248,7 +231,6 @@ body {
     color: #2c1f3a;
 }
 
-/* Animated Background */
 @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -268,7 +250,6 @@ body::before {
     z-index: -1;
 }
 
-/* Menu Section Headers in Sidebar */
 .sidebar .nav-item span.nav-link {
     color: #00fa9a !important;
     font-size: 0.9em;
@@ -277,7 +258,6 @@ body::before {
     opacity: 0.8;
 }
 
-/* Logo Section */
 .sidebar .text-center img {
     border: 2px solid #00fa9a;
     padding: 3px;
@@ -291,7 +271,6 @@ body::before {
     text-shadow: 0 0 10px rgba(0, 250, 154, 0.3);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .sidebar {
         width: 100%;
