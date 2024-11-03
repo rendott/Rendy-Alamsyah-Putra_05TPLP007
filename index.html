@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistem Informasi Manajemen Karyawan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        .login-title {
+            color: white;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: none;
+            color: white;
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-label {
+            color: white;
+            font-weight: 500;
+        }
+
+        .btn-login {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .login-footer {
+            color: white;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .login-footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .input-group-text {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+        }
+
+        .floating-shapes div {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(100px, 100px); }
+            50% { transform: translate(-100px, 200px); }
+            75% { transform: translate(200px, -100px); }
+        }
+
+        /* Styles untuk animated logo */
+        .admin-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .animated-logo {
+            transform-origin: center;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        .logo-circle {
+            stroke-dasharray: 70;
+            stroke-dashoffset: 70;
+            animation: drawCircle 2s forwards, pulse 2s infinite;
+        }
+
+        .logo-shield {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: drawPath 2s forwards;
+            opacity: 0.9;
+        }
+
+        .logo-user {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: drawPath 2s 0.5s forwards;
+            opacity: 0.9;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes drawCircle {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes drawPath {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .admin-logo:hover .animated-logo {
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+        }
+
+        .admin-logo:hover .logo-circle,
+        .admin-logo:hover .logo-shield,
+        .admin-logo:hover .logo-user {
+            stroke-width: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating shapes background -->
+    <div class="floating-shapes">
+        <div style="top: 20%; left: 20%;"></div>
+        <div style="top: 60%; left: 70%;"></div>
+        <div style="top: 40%; left: 40%;"></div>
+        <div style="top: 80%; left: 30%;"></div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="glass-card">
+                    <div class="text-center mb-4">
+                        <div class="admin-logo mb-3">
+                            <svg width="100" height="100" viewBox="0 0 24 24" class="animated-logo">
+                                <!-- Lingkaran Luar -->
+                                <circle cx="12" cy="12" r="10" class="logo-circle" stroke="white" stroke-width="1" fill="none"/>
+                                
+                                <!-- Ikon Shield -->
+                                <path class="logo-shield" d="M12 3L4 7v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V7l-8-4z" 
+                                      stroke="white" 
+                                      fill="none" 
+                                      stroke-width="1"/>
+                                
+                                <!-- Ikon User -->
+                                <path class="logo-user" d="M12 12c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z
+                                                         M12 14c-2.67 0-8 1.34-8 4v1h16v-1c0-2.66-5.33-4-8-4z" 
+                                      stroke="white" 
+                                      fill="none" 
+                                      stroke-width="1"/>
+                            </svg>
+                        </div>
+                        <h4 class="login-title">Login</h4>
+                    </div>
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <input type="text" class="form-control" id="username" placeholder="Username" required>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <input type="password" class="form-control" id="password" placeholder="Password" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-login w-100">Login</button>
+                        <div class="login-footer">
+                            <p>Tidak punya akun? <a href="register.html">Register</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.username === username && u.password === password);
+            
+            if (user) {
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                window.location.href = 'dasboard.html';
+            } else {
+                alert('Username atau password salah!');
+            }
+        });
+    </script>
+</body>
+</html>

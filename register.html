@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Sistem Informasi Manajemen Karyawan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        .register-title {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: none;
+            color: white;
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-label {
+            color: white;
+            font-weight: 500;
+        }
+
+        .btn-register {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .register-footer {
+            color: white;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .register-footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .register-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .input-group-text {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+        }
+
+        .floating-shapes div {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(100px, 100px); }
+            50% { transform: translate(-100px, 200px); }
+            75% { transform: translate(200px, -100px); }
+        }
+
+        .progress-bar {
+            height: 3px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            width: 0;
+            transition: width 0.3s ease;
+        }
+        .admin-logo {
+        animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating shapes background -->
+    <div class="floating-shapes">
+        <div style="top: 20%; left: 20%;"></div>
+        <div style="top: 60%; left: 70%;"></div>
+        <div style="top: 40%; left: 40%;"></div>
+        <div style="top: 80%; left: 30%;"></div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="glass-card">
+                    <div class="text-center mb-4">
+                        <div class="admin-logo">
+                            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 16v-4"></path>
+                                <path d="M12 8h.01"></path>
+                            </svg>
+                        </div>
+                        <h4 class="register-title">Daftar</h4>
+                    </div>
+                    <form id="registerForm">
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <input type="text" class="form-control" id="newUsername" placeholder="Username" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <input type="password" class="form-control" id="newPassword" placeholder="Password" required>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
+                            </div>
+                        </div>
+                        <div class="progress mb-3">
+                            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <button type="submit" class="btn btn-register w-100">Register</button>
+                        <div class="register-footer">
+                            <p>Sudah punya akun? <a href="index.html">Login</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const newUsername = document.getElementById('newUsername').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (newPassword !== confirmPassword) {
+                alert('Password dan konfirmasi password tidak cocok!');
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            if (users.some(u => u.username === newUsername)) {
+                alert('Username sudah digunakan!');
+                return;
+            }
+
+            users.push({ username: newUsername, password: newPassword });
+            localStorage.setItem('users', JSON.stringify(users));
+            alert('Pendaftaran berhasil! Silakan login.');
+            window.location.href = 'index.html';
+        });
+
+        // Password strength indicator
+        document.getElementById('newPassword').addEventListener('input', function(e) {
+            const password = e.target.value;
+            const progressBar = document.querySelector('.progress-bar');
+            let strength = 0;
+
+            // Check password length
+            if (password.length >= 8) strength += 25;
+            // Check for numbers
+            if (/\d/.test(password)) strength += 25;
+            // Check for lowercase letters
+            if (/[a-z]/.test(password)) strength += 25;
+            // Check for uppercase letters
+            if (/[A-Z]/.test(password)) strength += 25;
+
+            progressBar.style.width = strength + '%';
+            
+            // Change progress bar color based on strength
+            if (strength < 50) {
+                progressBar.style.background = 'linear-gradient(to right, #ff4e50, #f9d423)';
+            } else if (strength < 75) {
+                progressBar.style.background = 'linear-gradient(to right, #f9d423, #00b09b)';
+            } else {
+                progressBar.style.background = 'linear-gradient(to right, #00b09b, #96c93d)';
+            }
+        });
+
+        // Animation for input fields
+        const inputs = document.querySelectorAll('.form-control');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+                this.parentElement.style.transition = 'transform 0.3s ease';
+            });
+
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+
+        // Add loading animation when submitting
+        document.getElementById('registerForm').addEventListener('submit', function() {
+            const button = this.querySelector('button[type="submit"]');
+            button.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Creating account...';
+            button.disabled = true;
+        });
+    </script>
+
+    <!-- Tambahkan animasi notifikasi -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Notification</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body"></div>
+        </div>
+    </div>
+
+    <script>
+        // Function to show notification
+        function showNotification(message, type = 'success') {
+            const toast = document.getElementById('notification');
+            const toastBody = toast.querySelector('.toast-body');
+            toastBody.textContent = message;
+            toast.classList.add(`bg-${type}`);
+            toast.classList.add('text-white');
+            
+            const bsToast = new bootstrap.Toast(toast);
+            bsToast.show();
+
+            setTimeout(() => {
+                toast.classList.remove(`bg-${type}`);
+                toast.classList.remove('text-white');
+            }, 3000);
+        }
+
+        // Tambahkan animasi hover untuk card
+        const card = document.querySelector('.glass-card');
+        card.addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            this.style.setProperty('--mouse-x', `${x}px`);
+            this.style.setProperty('--mouse-y', `${y}px`);
+        });
+    </script>
+
+    <!-- Tambahkan efek partikel background -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#ffffff' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 6, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+    </script>
+</body>
+</html>

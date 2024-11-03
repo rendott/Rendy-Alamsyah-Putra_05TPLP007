@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sistem Informasi Manajemen Karyawan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            min-height: 100vh;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .main-content {
+            padding: 20px;
+        }
+        .card {
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .logout-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex">
+        <div class="bg-primary text-white sidebar p-3">
+            <div class="text-center mb-3">
+                <div class="logo-container mb-2">
+                    <svg class="admin-logo" viewBox="0 0 24 24" width="40" height="40">
+                        <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                    </svg>
+                </div>
+                <h5>Admin Login</h5>
+            </div>
+            <p>Welcome, <small>Administrator</small></p>
+            <ul class="nav flex-column">
+                <!-- Navigation items remain the same -->
+                <li class="nav-item">
+                    <a href="dasboard.html" class="nav-link text-white active"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <span class="nav-link text-white">MENU KARYAWAN</span>
+                </li>
+                <li class="nav-item">
+                    <a href="karyawan.html" class="nav-link text-white"><i class="fas fa-users me-2"></i>Karyawan</a>
+                </li>
+                <li class="nav-item">
+                    <a href="jabatan.html" class="nav-link text-white"><i class="fas fa-briefcase me-2"></i>Jabatan</a>
+                </li>
+                <li class="nav-item">
+                    <a href="divisi.html" class="nav-link text-white"><i class="fas fa-sitemap me-2"></i>Divisi</a>
+                </li>
+                <li class="nav-item">
+                    <span class="nav-link text-white">MENU ABSENSI</span>
+                </li>
+                <li class="nav-item">
+                    <a href="absensi.html" class="nav-link text-white"><i class="fas fa-calendar-check me-2"></i>Absensi</a>
+                </li>
+                <li class="nav-item">
+                    <a href="izin.html" class="nav-link text-white"><i class="fas fa-file-alt me-2"></i>Izin</a>
+                </li>
+                <li class="nav-item">
+                    <a href="lembur.html" class="nav-link text-white"><i class="fas fa-clock me-2"></i>Lembur</a>
+                </li>
+                <li class="nav-item">
+                    <span class="nav-link text-white">MENU LAPORAN</span>
+                </li>
+                <li class="nav-item">
+                    <a href="laporan.html" class="nav-link text-white"><i class="fas fa-clock me-2"></i>Cetak Laporan</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="container mt-4">
+                <a href="index.html" class="btn btn-outline-danger logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+
+            <h2 class="header-title mb-4">Sistem Informasi Manajemen Karyawan</h2>
+    
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="karyawan.html" class="card text-center shadow-sm text-decoration-none text-dark">
+                        <div class="card-body">
+                            <i class="fas fa-users fa-2x text-primary"></i>
+                            <h5 class="card-title mt-3">Data Karyawan</h5>
+                            <p class="display-6" id="jumlahKaryawan">0</p>
+                        </div>
+                    </a>
+                </div>
+    
+                <div class="col-md-3">
+                    <a href="absensi.html" class="card text-center shadow-sm text-decoration-none text-dark">
+                        <div class="card-body">
+                            <i class="fas fa-calendar-check fa-2x text-success"></i>
+                            <h5 class="card-title mt-3">Total Absensi</h5>
+                            <p class="display-6" id="totalAbsensi">0</p>
+                        </div>
+                    </a>
+                </div>
+    
+                <div class="col-md-3">
+                    <a href="izin.html" class="card text-center shadow-sm text-decoration-none text-dark">
+                        <div class="card-body">
+                            <i class="fas fa-file-alt fa-2x text-info"></i>
+                            <h5 class="card-title mt-3">Total Izin</h5> <!-- Ubah ini -->
+                            <p class="display-6" id="izinHariIni">0</p>
+                        </div>
+                    </a>
+                </div>
+    
+                <div class="col-md-3">
+                    <a href="lembur.html" class="card text-center shadow-sm text-decoration-none text-dark">
+                        <div class="card-body">
+                            <i class="fas fa-clock fa-2x text-purple"></i>
+                            <h5 class="card-title mt-3">Lembur</h5>
+                            <p class="display-6" id="lemburHariIni">0</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+    
+            <!-- Elemen kanvas untuk grafik -->
+            <canvas id="myChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi untuk mendapatkan jumlah karyawan
+        function getJumlahKaryawan() {
+            const karyawanData = JSON.parse(localStorage.getItem("karyawanData")) || [];
+            return karyawanData.length;
+        }
+
+        // Fungsi untuk mendapatkan total absensi
+        function getTotalAbsensi() {
+            const absensiData = JSON.parse(localStorage.getItem("absensiData")) || [];
+            return absensiData.length;
+        }
+
+        // Fungsi untuk mendapatkan total izin
+        function getTotalIzin() {
+            try {
+                const izinData = JSON.parse(localStorage.getItem("izinData")) || [];
+                return izinData.length;
+            } catch (error) {
+                console.error("Error in getTotalIzin:", error);
+                return 0;
+            }
+        }
+
+        // Fungsi yang diperbarui untuk mendapatkan lembur
+        function getLemburHariIni() {
+            try {
+                const lemburData = JSON.parse(localStorage.getItem("lemburData")) || [];
+                
+                // Debug logs
+                console.log("Fetching lembur data:", lemburData);
+                
+                // Get today's date in YYYY-MM-DD format
+                const today = new Date().toISOString().split('T')[0];
+                console.log("Today's date:", today);
+                
+                // Filter lembur for today
+                const todayLembur = lemburData.filter(lembur => {
+                    console.log("Comparing dates:", lembur.tanggal, today);
+                    return lembur.tanggal === today;
+                });
+                
+                console.log("Today's lembur:", todayLembur);
+                return todayLembur.length;
+            } catch (error) {
+                console.error("Error in getLemburHariIni:", error);
+                return 0;
+            }
+        }
+
+        // Fungsi untuk mengupdate dashboard
+        function updateDashboard() {
+            console.log("Updating dashboard...");
+            
+            const jumlahKaryawan = getJumlahKaryawan();
+            const totalAbsensi = getTotalAbsensi();
+            const totalIzin = getTotalIzin();
+            const lemburHariIni = getLemburHariIni();
+
+            console.log("Dashboard values:", {
+                jumlahKaryawan,
+                totalAbsensi,
+                totalIzin,
+                lemburHariIni
+            });
+
+            // Update tampilan angka
+            document.getElementById('jumlahKaryawan').textContent = jumlahKaryawan;
+            document.getElementById('totalAbsensi').textContent = totalAbsensi;
+            document.getElementById('izinHariIni').textContent = totalIzin;
+            document.getElementById('lemburHariIni').textContent = lemburHariIni;
+
+            // Update grafik
+            if (myChart) {
+                myChart.data.datasets[0].data = [jumlahKaryawan, totalAbsensi, totalIzin, lemburHariIni];
+                myChart.update();
+            }
+        }
+
+        // Data untuk grafik
+        const data = {
+            labels: ['Total Karyawan', 'Total Absensi', 'Izin', 'Lembur'],
+            datasets: [{
+                label: 'Jumlah',
+                data: [0, 0, 0, 0],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // Konfigurasi grafik
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        // Inisialisasi grafik
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM loaded, initializing dashboard...");
+            updateDashboard();
+            // Update dashboard setiap 5 detik
+            setInterval(updateDashboard, 5000);
+        });
+
+        // Event listener untuk storage changes
+        window.addEventListener('storage', function(e) {
+            console.log("Storage event detected:", e.key);
+            if (['karyawanData', 'absensiData', 'izinData', 'lemburData'].includes(e.key)) {
+                updateDashboard();
+            }
+        });
+
+        // Custom event listener untuk update manual
+        window.addEventListener('dashboardUpdate', function() {
+            console.log("Manual dashboard update triggered");
+            updateDashboard();
+        });
+
+        // Debug helper
+        function debugStorage() {
+            console.log('Storage Debug Info:');
+            console.log('Karyawan:', JSON.parse(localStorage.getItem("karyawanData")));
+            console.log('Absensi:', JSON.parse(localStorage.getItem("absensiData")));
+            console.log('Izin:', JSON.parse(localStorage.getItem("izinData")));
+            console.log('Lembur:', JSON.parse(localStorage.getItem("lemburData")));
+        }
+
+        // Uncomment baris berikut untuk debugging
+        debugStorage();
+    </script>
+</body>
+</html>
