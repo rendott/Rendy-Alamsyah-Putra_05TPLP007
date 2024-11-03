@@ -110,7 +110,6 @@
         </div>
 
     <script>
-        // Fungsi untuk memformat tanggal
         function formatDate(date) {
             const d = new Date(date);
             const year = d.getFullYear();
@@ -119,7 +118,6 @@
             return `${day}-${month}-${year}`;
         }
 
-        // Fungsi untuk membuat laporan
         function generateReport(data, jenisLaporan, tanggalMulai, tanggalAkhir) {
             let tableHeaders = '';
             let tableRows = '';
@@ -137,7 +135,6 @@
                     break;
             }
 
-            // Generate rows
             data.forEach((item, index) => {
                 tableRows += '<tr>';
                 tableRows += `<td>${index + 1}</td>`;
@@ -186,7 +183,6 @@
             `;
         }
 
-        // Event listener untuk form submit
         document.getElementById('laporanForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -194,16 +190,13 @@
             const tanggalMulai = document.getElementById('tanggal_mulai').value;
             const tanggalAkhir = document.getElementById('tanggal_akhir').value;
 
-            // Ambil data dari localStorage
             let data = JSON.parse(localStorage.getItem(`${jenisLaporan}Data`)) || [];
 
-            // Filter data berdasarkan rentang tanggal
             data = data.filter(item => {
                 const itemDate = new Date(item.tanggal);
                 return itemDate >= new Date(tanggalMulai) && itemDate <= new Date(tanggalAkhir);
             });
 
-            // Generate dan tampilkan laporan
             const reportWindow = window.open('', '_blank');
             reportWindow.document.write(generateReport(data, jenisLaporan, tanggalMulai, tanggalAkhir));
             reportWindow.document.close();
