@@ -180,7 +180,7 @@
                         </div>
                         <button type="submit" class="btn btn-register w-100">Register</button>
                         <div class="register-footer">
-                            <p>Sudah punya akun? <a href="index.html">Login</a></p>
+                            <p>Sudah punya akun? <a href="login.html">Login</a></p>
                         </div>
                     </form>
                 </div>
@@ -210,7 +210,7 @@
             users.push({ username: newUsername, password: newPassword });
             localStorage.setItem('users', JSON.stringify(users));
             alert('Pendaftaran berhasil! Silakan login.');
-            window.location.href = 'index.html';
+            window.location.href = 'login.html';
         });
 
         // Password strength indicator
