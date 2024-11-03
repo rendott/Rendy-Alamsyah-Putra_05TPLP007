@@ -47,7 +47,6 @@
             </div>
             <p>Welcome, <small>Administrator</small></p>
             <ul class="nav flex-column">
-                <!-- Navigation items remain the same -->
                 <li class="nav-item">
                     <a href="dasboard.html" class="nav-link text-white active"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
                 </li>
@@ -116,7 +115,7 @@
                     <a href="izin.html" class="card text-center shadow-sm text-decoration-none text-dark">
                         <div class="card-body">
                             <i class="fas fa-file-alt fa-2x text-info"></i>
-                            <h5 class="card-title mt-3">Total Izin</h5> <!-- Ubah ini -->
+                            <h5 class="card-title mt-3">Total Izin</h5>
                             <p class="display-6" id="izinHariIni">0</p>
                         </div>
                     </a>
@@ -134,25 +133,21 @@
             </div>
 
     
-            <!-- Elemen kanvas untuk grafik -->
             <canvas id="myChart" width="400" height="200"></canvas>
         </div>
     </div>
 
     <script>
-        // Fungsi untuk mendapatkan jumlah karyawan
         function getJumlahKaryawan() {
             const karyawanData = JSON.parse(localStorage.getItem("karyawanData")) || [];
             return karyawanData.length;
         }
 
-        // Fungsi untuk mendapatkan total absensi
         function getTotalAbsensi() {
             const absensiData = JSON.parse(localStorage.getItem("absensiData")) || [];
             return absensiData.length;
         }
 
-        // Fungsi untuk mendapatkan total izin
         function getTotalIzin() {
             try {
                 const izinData = JSON.parse(localStorage.getItem("izinData")) || [];
@@ -163,19 +158,15 @@
             }
         }
 
-        // Fungsi yang diperbarui untuk mendapatkan lembur
         function getLemburHariIni() {
             try {
                 const lemburData = JSON.parse(localStorage.getItem("lemburData")) || [];
                 
-                // Debug logs
                 console.log("Fetching lembur data:", lemburData);
                 
-                // Get today's date in YYYY-MM-DD format
                 const today = new Date().toISOString().split('T')[0];
                 console.log("Today's date:", today);
                 
-                // Filter lembur for today
                 const todayLembur = lemburData.filter(lembur => {
                     console.log("Comparing dates:", lembur.tanggal, today);
                     return lembur.tanggal === today;
@@ -189,7 +180,6 @@
             }
         }
 
-        // Fungsi untuk mengupdate dashboard
         function updateDashboard() {
             console.log("Updating dashboard...");
             
@@ -205,20 +195,17 @@
                 lemburHariIni
             });
 
-            // Update tampilan angka
             document.getElementById('jumlahKaryawan').textContent = jumlahKaryawan;
             document.getElementById('totalAbsensi').textContent = totalAbsensi;
             document.getElementById('izinHariIni').textContent = totalIzin;
             document.getElementById('lemburHariIni').textContent = lemburHariIni;
 
-            // Update grafik
             if (myChart) {
                 myChart.data.datasets[0].data = [jumlahKaryawan, totalAbsensi, totalIzin, lemburHariIni];
                 myChart.update();
             }
         }
 
-        // Data untuk grafik
         const data = {
             labels: ['Total Karyawan', 'Total Absensi', 'Izin', 'Lembur'],
             datasets: [{
@@ -240,7 +227,6 @@
             }]
         };
 
-        // Konfigurasi grafik
         const config = {
             type: 'bar',
             data: data,
@@ -254,21 +240,17 @@
             }
         };
 
-        // Inisialisasi grafik
         const myChart = new Chart(
             document.getElementById('myChart'),
             config
         );
 
-        // Event listeners
         document.addEventListener('DOMContentLoaded', function() {
             console.log("DOM loaded, initializing dashboard...");
             updateDashboard();
-            // Update dashboard setiap 5 detik
             setInterval(updateDashboard, 5000);
         });
 
-        // Event listener untuk storage changes
         window.addEventListener('storage', function(e) {
             console.log("Storage event detected:", e.key);
             if (['karyawanData', 'absensiData', 'izinData', 'lemburData'].includes(e.key)) {
@@ -276,13 +258,11 @@
             }
         });
 
-        // Custom event listener untuk update manual
         window.addEventListener('dashboardUpdate', function() {
             console.log("Manual dashboard update triggered");
             updateDashboard();
         });
 
-        // Debug helper
         function debugStorage() {
             console.log('Storage Debug Info:');
             console.log('Karyawan:', JSON.parse(localStorage.getItem("karyawanData")));
@@ -291,7 +271,6 @@
             console.log('Lembur:', JSON.parse(localStorage.getItem("lemburData")));
         }
 
-        // Uncomment baris berikut untuk debugging
         debugStorage();
     </script>
 </body>
